@@ -1,0 +1,22 @@
+<h1>Listing ideas</h1>
+
+
+    <% @ideas.each do |idea| %>
+      <article>
+        <h3><%= idea.name %></h3>
+        <p><%= idea.description %></p>
+        <%= image_tag(idea.picture_url, :width => 200) if idea.picture.present? %>
+
+        <div class="btn-group">
+          <%= link_to 'Show', idea, :class => "btn" %>
+        <%= link_to 'Edit', edit_idea_path(idea), :class => "btn" %>
+        <%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
+        </div>
+        
+      </article>
+    <% end %>
+  
+
+<div class="btn-group idea-ctl">
+<%= link_to 'New Idea', new_idea_path, :class => "btn" %>
+</div>
